@@ -5,13 +5,16 @@ import App from './App';
 import Main from './Component/Main'
 import NavBar from './Component/NavBar'
 import MovieApp from './moviesApp';
-import Main from './Components/main';
+import InputBox from './Components/InputBox';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   // App is used to render reset Counter App
   <>
     <App />
-    <h1> Hello </h1>
+    <Main></Main>
+    <InputBox></InputBox>
+    <NavBar></NavBar>
+    <Pagination></Pagination>
   </>
 );
