@@ -1,7 +1,7 @@
 import React from 'react'
 function Genre(){
     return(
-        <div>Genre</div>
+        <div className='mr-6'>Genre</div>
     )
 }
 

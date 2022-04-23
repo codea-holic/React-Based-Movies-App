@@ -1,8 +1,15 @@
-    import React from 'react'
+import React from 'react'
+import InputBox from './InputBox'
+import MoviesTable from './MoviesTable'
+import Pagination from './Pagination'
     
     function MovieBox() {
       return (
-        <div>MovieBox</div>
+        <div>
+          <InputBox></InputBox>
+          <MoviesTable></MoviesTable>
+          <Pagination></Pagination>
+        </div>
       )
     }
     

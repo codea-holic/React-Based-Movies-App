@@ -4,8 +4,6 @@ import './index.css';
 import App from './App';
 import NavBar from './Components/Navbar';
 import Main from './Components/Main';
-import InputBox from './Components/InputBox';
-import Pagination from './Components/Pagination';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -13,8 +11,6 @@ root.render(
   <>
     <App />
     <NavBar></NavBar>
-    <InputBox></InputBox>
     <Main></Main>
-    <Pagination></Pagination>
   </>
 );
