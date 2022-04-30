@@ -10,7 +10,5 @@ root.render(
   // App is used to render reset Counter App
   <>
     <App />
-    <NavBar></NavBar>
-    <Main></Main>
   </>
 );

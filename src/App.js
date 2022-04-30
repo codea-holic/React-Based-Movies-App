@@ -1,7 +1,13 @@
 import React from 'react'
-function App(){
-    return(
-        <div>MovieApp</div>
+import NavBar from './Components/Navbar';
+import Main from './Components/Main';
+function App() {
+    return (
+        <div>
+            <NavBar></NavBar>
+            <Main></Main>
+        </div>
+
     )
 }
 
