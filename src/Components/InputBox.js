@@ -1,13 +1,14 @@
 import React from 'react'
 
-function InputBox() {
+function InputBox(props) {
     let [searchText, setSearchText] = React.useState('');
     let [noOfItems, setNumberOfItems] = React.useState(4);
     // <div>InputBox</div>
     const handleText = (e) => {
-        console.log(e.target.value);
         setSearchText(e.target.value);
+        props.setGlobalSearchText(e.target.value);
     }
+
     const handleCount = (e) => {
         setNumberOfItems(e.target.value);
     }

@@ -1,7 +1,7 @@
 import React from 'react'
 import { useEffect } from 'react';
 
-function MoviesTable() {
+function MoviesTable(props) {
     let [isLoaded, setLoaded] = React.useState(true);
     // Below function will run after return is excuted
     let [content, setContent] = React.useState("");
@@ -10,10 +10,20 @@ function MoviesTable() {
         // fetch function is inbuilt feature 
         let response = await fetch('https://react-backend101.herokuapp.com/movies')
         response = await response.json();
-        console.log(response);
         setLoaded(false);
         setContent(response);
     }, []);
+
+    // console.log("Movies Table " + props.searchText);
+    let filteredContent = [];
+    if(props.searchText){
+        filteredContent = content.movies.filter((movie) => {
+            return movie.title.toLowerCase().includes(props.searchText.toLowerCase());
+        });
+        console.log(filteredContent);
+    } else{
+        filteredContent = content.movies;
+    }
 
     return (
         <>
@@ -33,8 +43,7 @@ function MoviesTable() {
                         </thead>
                         <tbody>
                             {
-                                content.movies.map(function (movie, idx) {
-                                    console.log(movie);
+                                filteredContent.map(function (movie, idx) {
                                     return <tr>
                                         <td className='px-2 text-center'>{idx + 1}</td>
                                         <td className='px-2 text-center'>{movie.title}</td>
