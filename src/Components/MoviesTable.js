@@ -6,6 +6,7 @@ function MoviesTable(props) {
     // Below function will run after return is excuted
     let [content, setContent] = React.useState("");
 
+    // Jab ye dusri bar render hoga, tab 'useEffect' wala function nhi chalega
     React.useEffect(async function () {
         // fetch function is inbuilt feature 
         let response = await fetch('https://react-backend101.herokuapp.com/movies')
@@ -20,9 +21,17 @@ function MoviesTable(props) {
         filteredContent = content.movies.filter((movie) => {
             return movie.title.toLowerCase().includes(props.searchText.toLowerCase());
         });
-        console.log(filteredContent);
+        if(filteredContent.length > props.moviesCount && props.moviesCount){
+            filteredContent = filteredContent.slice(0, props.moviesCount);
+        }
     } else{
         filteredContent = content.movies;
+    }
+
+    if(content.movies && props.moviesCount){
+        if(filteredContent.length > props.moviesCount){
+            filteredContent = filteredContent.slice(0, props.moviesCount);
+        }
     }
 
     return (

@@ -2,7 +2,7 @@ import React from 'react'
 
 function InputBox(props) {
     let [searchText, setSearchText] = React.useState('');
-    let [noOfItems, setNumberOfItems] = React.useState(4);
+    let [noOfItems, setNumberOfItems] = React.useState(9);
     // <div>InputBox</div>
     const handleText = (e) => {
         setSearchText(e.target.value);
@@ -11,7 +11,9 @@ function InputBox(props) {
 
     const handleCount = (e) => {
         setNumberOfItems(e.target.value);
+        props.setGlobalMoviesCount(e.target.value);
     }
+    
     return (
         <div>
             <button className="bg-blue-600 rounded border hover:bg-green-500 text-white px-1 py-1 mx-1">NEW</button>
