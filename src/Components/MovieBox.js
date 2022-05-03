@@ -15,6 +15,10 @@ function MovieBox(props) {
     setMoviesCount(moviesCount);
   }
 
+  if(props.cGenre){
+    console.log("MovieBox :", props.cGenre);
+  }
+
   return (
     <div>
       <InputBox setGlobalSearchText={setGlobalSearchText} setGlobalMoviesCount={setGlobalMoviesCount}></InputBox>

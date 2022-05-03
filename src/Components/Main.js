@@ -6,8 +6,10 @@ function Main(){
     // here 'Genre' is not working but 'genre' is working
     let [genre, setGenre] = React.useState("");
     const setGlobalGenre = (newGenre) => {
-        setGenre(newGenre);
-    }
+        setGenre(newGenre === 'All Genres' ? '' : newGenre);
+
+    } 
+    
 
     return(
         <div className='flex'>

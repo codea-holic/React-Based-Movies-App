@@ -5,7 +5,6 @@ function Genre(props) {
 	React.useEffect(async function () {
 		let response = await fetch('https://react-backend101.herokuapp.com/genres');
 		response = await response.json();
-		console.log(response);
 		setLoaded(false);
 		setContent(response);
 	}, []);
@@ -31,14 +30,14 @@ function Genre(props) {
 			<div className='Genre'>
 				<table className='table-auto'>
 					<thead>
-						<th className='mr-6 border-2 w-40 text-center h-10 font-bold'>All Genres</th>
+						<th className='mr-6 border-2 w-40 text-center h-10 font-bold hover:bg-blue-500 cursor-pointer' onClick={sendGenre}>All Genres</th>
 					</thead>
 				</table>
 				<tbody>
 					{
 						content.genres.map(function (genre) {
 							return <tr>
-								<td className='mr-6 border-2 border-t-0 w-40 text-center h-10 hover:bg-blue-500' onClick={sendGenre}>{genre.name}</td>
+								<td className='mr-6 border-2 border-t-0 w-40 text-center h-10 hover:bg-blue-500 cursor-pointer' onClick={sendGenre}>{genre.name}</td>
 							</tr>
 						})
 					}

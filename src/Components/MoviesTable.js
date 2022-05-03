@@ -17,6 +17,7 @@ function MoviesTable(props) {
 
 	// console.log("Movies Table " + props.searchText);
 	let filteredContent = [];
+	filteredContent = content.movies;
 	if (props.searchText) {
 		filteredContent = content.movies.filter((movie) => {
 			return movie.title.toLowerCase().includes(props.searchText.toLowerCase());
@@ -24,8 +25,6 @@ function MoviesTable(props) {
 		if (filteredContent.length > props.moviesCount && props.moviesCount) {
 			filteredContent = filteredContent.slice(0, props.moviesCount);
 		}
-	} else {
-		filteredContent = content.movies;
 	}
 	
 	if (content.movies && props.moviesCount) {
@@ -41,6 +40,11 @@ function MoviesTable(props) {
 		} 
 	}
 
+	// TODO: implement feature of Delete
+	const handleDelete = (e) => {
+		console.log("Delete Clicked");
+		console.log(e.target);
+	}
 
 	return (
 		<>
@@ -61,14 +65,15 @@ function MoviesTable(props) {
 						<tbody>
 							{
 								filteredContent.map(function (movie, idx) {
-									return <tr>
+									return <tr className='movie-detail'>
 										<td className='px-2 text-center'>{idx + 1}</td>
 										<td className='px-2 text-center'>{movie.title}</td>
 										<td className='px-2 text-center'>{movie.genre.name}</td>
 										<td className='px-6 text-center'>{movie.numberInStock}</td>
 										<td className='px-2 text-center'>{movie.dailyRentalRate}</td>
 										<td className='px-2 text-center'>
-											<button className="bg-red-500 rounded hover:bg-red-700 font-medium text-white px-1 py-1 mx-1">DELETE</button>
+											<button className="bg-red-500 rounded hover:bg-red-700 font-medium
+											 text-white px-1 py-1 mx-1" onClick={handleDelete}>DELETE</button>
 										</td>
 									</tr>
 								})
