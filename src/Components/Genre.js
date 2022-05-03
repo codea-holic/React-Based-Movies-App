@@ -36,7 +36,7 @@ function Genre(props) {
 				<tbody>
 					{
 						content.genres.map(function (genre) {
-							return <tr>
+							return <tr key={genre._id}>
 								<td className='mr-6 border-2 border-t-0 w-40 text-center h-10 hover:bg-blue-500 cursor-pointer' onClick={sendGenre}>{genre.name}</td>
 							</tr>
 						})

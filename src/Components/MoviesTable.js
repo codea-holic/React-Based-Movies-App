@@ -14,6 +14,14 @@ function MoviesTable(props) {
 		setLoaded(false);
 		setContent(response);
 	}, []);
+	
+	// TODO: implement feature of Delete
+	const handleDelete = (movieID) => {
+		console.log("Delete Clicked");
+		let restMovies = content.movies.filter((movie) => movieID !==  movie._id);
+		let newObject = {...content, movies : restMovies};
+		setContent(newObject);
+	}
 
 	// console.log("Movies Table " + props.searchText);
 	let filteredContent = [];
@@ -40,12 +48,6 @@ function MoviesTable(props) {
 		} 
 	}
 
-	// TODO: implement feature of Delete
-	const handleDelete = (e) => {
-		console.log("Delete Clicked");
-		console.log(e.target);
-	}
-
 	return (
 		<>
 			{/* <div>MoviesTable</div> */}
@@ -65,7 +67,7 @@ function MoviesTable(props) {
 						<tbody>
 							{
 								filteredContent.map(function (movie, idx) {
-									return <tr className='movie-detail'>
+									return <tr key={movie._id}>
 										<td className='px-2 text-center'>{idx + 1}</td>
 										<td className='px-2 text-center'>{movie.title}</td>
 										<td className='px-2 text-center'>{movie.genre.name}</td>
@@ -73,7 +75,9 @@ function MoviesTable(props) {
 										<td className='px-2 text-center'>{movie.dailyRentalRate}</td>
 										<td className='px-2 text-center'>
 											<button className="bg-red-500 rounded hover:bg-red-700 font-medium
-											 text-white px-1 py-1 mx-1" onClick={handleDelete}>DELETE</button>
+											 text-white px-1 py-1 mx-1" onClick={() => {
+												 handleDelete(movie._id);
+											 }}>DELETE</button>
 										</td>
 									</tr>
 								})
