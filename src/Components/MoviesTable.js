@@ -26,6 +26,8 @@ function MoviesTable(props) {
 	// console.log("Movies Table " + props.searchText);
 	let filteredContent = [];
 	filteredContent = content.movies;
+	
+	/****************************** Searching *************************************/ 
 	if (props.searchText) {
 		filteredContent = content.movies.filter((movie) => {
 			return movie.title.toLowerCase().includes(props.searchText.toLowerCase());
@@ -35,6 +37,7 @@ function MoviesTable(props) {
 		}
 	}
 	
+	/****************************** Genre ************************************ (Grouping) */ 
 	if (content.movies && props.moviesCount) {
 		if(props.cGenre){
 			console.log(" -> Working " + props.cGenre);
@@ -43,6 +46,7 @@ function MoviesTable(props) {
 			})
 		}
 
+		/*************************No of Movies in a page ************************** (Pagination)*/
 		if (filteredContent.length > props.moviesCount) {
 			filteredContent = filteredContent.slice(0, props.moviesCount);
 		} 

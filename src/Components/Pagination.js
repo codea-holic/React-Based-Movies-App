@@ -1,6 +1,7 @@
 import React from 'react'
 
-function Pagination() {
+function Pagination(props) {
+  // number of movies, no of Items in a page
   return (
     <div>
       <button className="bg-blue-600 rounded hover:bg-blue-500 text-white font-medium border-2  px-2.5 py-2">1</button>
