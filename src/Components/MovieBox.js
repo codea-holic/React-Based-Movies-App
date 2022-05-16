@@ -8,7 +8,7 @@ function MovieBox(props) {
   let [moviesCount, setMoviesCount] = React.useState(4);
   let [content, setContent] = React.useState("");
   let [isLoaded, setLoaded] = React.useState(true);
-  let [cPage, setcPage] = React.useState(3);
+  let {cPage, setcPage} = props;
 
   // Below function will run after return is excuted
   // Jab ye dusri bar render hoga, tab 'useEffect' wala function nhi chalega
@@ -45,7 +45,12 @@ function MovieBox(props) {
         cPage={cPage}
         setContent={setContent}>
       </MoviesTable>
-      <Pagination moviesCount={moviesCount} content={content}></Pagination>
+      <Pagination
+        moviesCount={moviesCount}
+        content={content}
+        cPage={cPage}
+        setcPage={setcPage}>
+      </Pagination>
     </div>
   )
 }

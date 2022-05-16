@@ -10,7 +10,7 @@ function MoviesTable(props) {
 		let restMovies = content.movies.filter((movie) => movieID !==  movie._id);
 		let newObject = {...content, movies : restMovies}; // ...content -> means content ke ander search karo.
 		setContent(newObject);
-	}
+	} 
 
 	// console.log("Movies Table " + props.searchText);
 	let filteredContent = [];
@@ -37,7 +37,7 @@ function MoviesTable(props) {
 
 		/*************************No of Movies in a page ************************** (Pagination)*/
 		let sidx = (cPage - 1) * moviesCount;
-		let eidx = sidx + moviesCount;
+		let eidx = sidx + parseInt(moviesCount);
 		if (filteredContent.length > props.moviesCount) {
 			filteredContent = filteredContent.slice(sidx, eidx);
 		} 
