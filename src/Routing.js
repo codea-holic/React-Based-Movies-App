@@ -1,5 +1,5 @@
 import React from 'react'
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Redirect, Navigate } from 'react-router-dom';
 
 function Home() {
     return (
@@ -27,9 +27,10 @@ function Routing() {
                 <button className='bg-blue-500'>Home</button>
             </div>
             <Routes>
-                <Route exact path="/home" element={<Home />} />
-                <Route exact path="/login" element={<Login />} />
-                <Route path="/*" element={<PageNotFound />} />
+                <Route path="/" element={<Navigate to="/home" />} />
+                <Route path="/home" element={<Home />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="*" element={<PageNotFound />} />
             </Routes>
         </>
     )

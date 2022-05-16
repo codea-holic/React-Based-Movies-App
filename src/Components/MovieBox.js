@@ -5,7 +5,21 @@ import Pagination from './Pagination'
 
 function MovieBox(props) {
   let [searchText, setSearchText] = React.useState("");
-  let [moviesCount, setMoviesCount] = React.useState(9);
+  let [moviesCount, setMoviesCount] = React.useState(4);
+  let [content, setContent] = React.useState("");
+  let [isLoaded, setLoaded] = React.useState(true);
+  let [cPage, setcPage] = React.useState(3);
+
+  // Below function will run after return is excuted
+  // Jab ye dusri bar render hoga, tab 'useEffect' wala function nhi chalega
+  React.useEffect(async function () {
+    // fetch function is inbuilt feature 
+    let response = await fetch('https://react-backend101.herokuapp.com/movies')
+    response = await response.json();
+    setLoaded(false);
+    setContent(response);
+  }, []);
+
   // jab bhi children ko parent se baat krni hoti hai to child apne parent ko function bhejta hai...
   const setGlobalSearchText = (searchText) => {
     setSearchText(searchText);
@@ -15,15 +29,23 @@ function MovieBox(props) {
     setMoviesCount(moviesCount);
   }
 
-  if(props.cGenre){
+  if (props.cGenre) {
     console.log("MovieBox :", props.cGenre);
   }
 
   return (
     <div>
       <InputBox setGlobalSearchText={setGlobalSearchText} setGlobalMoviesCount={setGlobalMoviesCount}></InputBox>
-      <MoviesTable searchText={searchText} moviesCount={moviesCount} cGenre = {props.cGenre}></MoviesTable>
-      <Pagination></Pagination>
+      <MoviesTable
+        searchText={searchText}
+        moviesCount={moviesCount}
+        cGenre={props.cGenre}
+        content={content}
+        isLoaded={isLoaded}
+        cPage={cPage}
+        setContent={setContent}>
+      </MoviesTable>
+      <Pagination moviesCount={moviesCount} content={content}></Pagination>
     </div>
   )
 }

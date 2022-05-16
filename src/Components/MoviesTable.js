@@ -2,24 +2,13 @@ import React from 'react'
 import { useEffect } from 'react';
 
 function MoviesTable(props) {
-	let [isLoaded, setLoaded] = React.useState(true);
-	// Below function will run after return is excuted
-	let [content, setContent] = React.useState("");
 
-	// Jab ye dusri bar render hoga, tab 'useEffect' wala function nhi chalega
-	React.useEffect(async function () {
-		// fetch function is inbuilt feature 
-		let response = await fetch('https://react-backend101.herokuapp.com/movies')
-		response = await response.json();
-		setLoaded(false);
-		setContent(response);
-	}, []);
-	
+	let {content, isLoaded, setContent, cPage, moviesCount} = props;
 	// TODO: implement feature of Delete
 	const handleDelete = (movieID) => {
 		console.log("Delete Clicked");
 		let restMovies = content.movies.filter((movie) => movieID !==  movie._id);
-		let newObject = {...content, movies : restMovies};
+		let newObject = {...content, movies : restMovies}; // ...content -> means content ke ander search karo.
 		setContent(newObject);
 	}
 
@@ -47,8 +36,10 @@ function MoviesTable(props) {
 		}
 
 		/*************************No of Movies in a page ************************** (Pagination)*/
+		let sidx = (cPage - 1) * moviesCount;
+		let eidx = sidx + moviesCount;
 		if (filteredContent.length > props.moviesCount) {
-			filteredContent = filteredContent.slice(0, props.moviesCount);
+			filteredContent = filteredContent.slice(sidx, eidx);
 		} 
 	}
 
