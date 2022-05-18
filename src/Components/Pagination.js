@@ -20,15 +20,14 @@ function Pagination(props) {
     <>
       {
         pagesArr.map(function (pageNumber) {
-          let css = (pageNumber == cPage ? "bg-blue-600 rounded hover:bg-blue-500 text-white font-medium border-2  px-2.5 py-2" :
+          let css = (pageNumber === cPage ? "bg-blue-600 rounded hover:bg-blue-500 text-white font-medium border-2  px-2.5 py-2" :
             "rounded hover:bg-blue-500 hover:text-white font-medium border-2 text-black px-2.5 py-2");
 
           return (
             <button className={css} onClick={() =>{
               setcPage(pageNumber);
-            }}>
+            }} key={pageNumber}>
               {pageNumber}
-
             </button>
           )
         })

@@ -12,12 +12,14 @@ function MovieBox(props) {
 
   // Below function will run after return is excuted
   // Jab ye dusri bar render hoga, tab 'useEffect' wala function nhi chalega
-  React.useEffect(async function () {
+  React.useEffect(function () {
+    (async function () {
     // fetch function is inbuilt feature 
     let response = await fetch('https://react-backend101.herokuapp.com/movies')
     response = await response.json();
     setLoaded(false);
     setContent(response);
+  })();
   }, []);
 
   // jab bhi children ko parent se baat krni hoti hai to child apne parent ko function bhejta hai...

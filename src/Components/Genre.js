@@ -2,18 +2,20 @@ import React from 'react'
 function Genre(props) {
 	const [isLoaded, setLoaded] = React.useState(true);
 	const [content, setContent] = React.useState("");
-	React.useEffect(async function () {
-		let response = await fetch('https://react-backend101.herokuapp.com/genres');
-		response = await response.json();
-		setLoaded(false);
-		setContent(response);
+	React.useEffect( function () {
+		(async function () {
+			let response = await fetch('https://react-backend101.herokuapp.com/genres');
+			response = await response.json();
+			setLoaded(false);
+			setContent(response);
+		})();
 	}, []);
 	const sendGenre = (e) => {
 		console.log(e.target.innerText);
 		props.setGlobalGenre(e.target.innerText);
 	};
 	return (
-		isLoaded == true ? <div className='Genre'>
+		isLoaded === true ? <div className='Genre'>
 			<table className='table-auto'>
 				<thead>
 					<tr>

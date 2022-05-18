@@ -1,5 +1,4 @@
 import React from 'react'
-import { useEffect } from 'react';
 
 function MoviesTable(props) {
 
@@ -46,7 +45,7 @@ function MoviesTable(props) {
 	return (
 		<>
 			{/* <div>MoviesTable</div> */}
-			<div>{isLoaded == true ? <div className='font-bold'>Loading...</div> :
+			<div>{isLoaded === true ? <div className='font-bold'>Loading...</div> :
 				<div>
 					<table className='table-auto'>
 						<thead>
